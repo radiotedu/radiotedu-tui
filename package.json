@@ -1,0 +1,51 @@
+{
+  "name": "radiotedu-tui",
+  "version": "1.4.3",
+  "description": "The official terminal radio, 32-band audio visualizer, Gold listening & campus Study client for RadioTEDU",
+  "author": "RadioTEDU Engineering <dev@radiotedu.com>",
+  "contributors": [
+    "Arda Akgül (akgularda) <akgularda@users.noreply.github.com>",
+    "Tuna Özsarı <tuna@radiotedu.com>"
+  ],
+  "type": "commonjs",
+  "bin": {
+    "radiotedu": "src/index.js",
+    "radiotedu-tui": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check src/tui.js && node --check src/api.js && node --check src/stations.js && node --check src/store.js && node --check src/player.js && node --check src/gold.js && node --check src/pkce.js",
+    "prepublishOnly": "npm test && npm run check"
+  },
+  "files": [
+    "src",
+    "install.ps1",
+    "install.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "radiotedu",
+    "radio",
+    "terminal",
+    "tui",
+    "ffplay",
+    "mpv",
+    "spectrum-visualizer",
+    "pomodoro",
+    "gold"
+  ],
+  "homepage": "https://radiotedu.com/tui",
+  "bugs": {
+    "url": "https://github.com/radiotedu/radiotedu-tui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radiotedu/radiotedu-tui.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
