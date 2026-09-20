@@ -27,7 +27,7 @@
 </g>
 <text x="424" y="468" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">60Hz  125Hz  250Hz  500Hz  1kHz  2kHz  4kHz  8kHz  16kHz</text>
 <text x="424" y="498" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">Station : Jazz (FLAC) · 24-bit 96kHz Lossless</text>
-<text x="424" y="522" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">Engine  : mpv · Buffer Healthy · Normal Latency</text>
+<text x="424" y="522" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">Ses     : Hazır · Buffer Healthy · Normal Latency</text>
 <rect x="24" y="556" width="1152" height="120" rx="10" fill="#1a1e2e"/>
 <text x="48" y="588" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">NOW PLAYING: Miles Davis — So What</text>
 <text x="48" y="616" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#1ed760">04:12 ━━━━━━━━━━━━━●━━━━━━━━━━━━━━━━━━━━━━ 60:00 [● LIVE]</text>

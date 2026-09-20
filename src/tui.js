@@ -239,16 +239,15 @@ function renderModalLines(modal, totalCols, maxRows) {
     boxLines.push(wrapLine(`  ${statusText}`));
     boxLines.push(padVisible(`${padLeft}${C.gold}╰${'─'.repeat(modalW - 2)}╯${C.reset}`, totalCols));
   } else if (modal.type === 'audio_engine_missing') {
-    boxLines.push(padVisible(`${padLeft}${C.brightRed}╭─ ⚠️ AUDIO DECODER REQUIRED // SES OYNATICI GEREKLİ ${'─'.repeat(Math.max(0, modalW - 48))}╮${C.reset}`, totalCols));
-    boxLines.push(wrapLine(`  ${C.bold}Canlı radyo yayını için bir ses motoru (ffplay/mpv/vlc) gereklidir.${C.reset}`));
+    boxLines.push(padVisible(`${padLeft}${C.brightRed}╭─ ♪ SES KURULUMU GEREKLİ ${'─'.repeat(Math.max(0, modalW - 32))}╮${C.reset}`, totalCols));
+    boxLines.push(wrapLine(`  ${C.bold}Canlı radyoyu dinlemek için tek dokunuşluk ses kurulumu gerekli.${C.reset}`));
     boxLines.push(wrapLine(''));
-    boxLines.push(wrapLine(`  ${C.white}Sisteminizde ses akışlarını çözecek oynatıcı bulunamadı.${C.reset}`));
+    boxLines.push(wrapLine(`  ${C.white}Ses bileşeni henüz hazır değil. İnternet açıkken tek tuşla kurulur.${C.reset}`));
     boxLines.push(wrapLine(''));
-    boxLines.push(wrapLine(`  ${C.spotifyGreen}${C.bold}[1]${C.reset} ⬇️ ${C.white}Taşınabilir ffplay motorunu otomatik kur (~6 sn) [Önerilen]${C.reset}`));
-    boxLines.push(wrapLine(`  ${C.cyan}${C.bold}[2]${C.reset} 📦 ${C.gray}winget ile kur: winget install Gyan.FFmpeg${C.reset}`));
+    boxLines.push(wrapLine(`  ${C.spotifyGreen}${C.bold}[1]${C.reset} ⬇️ ${C.white}Sesi otomatik kur (~6 sn) [Önerilen]${C.reset}`));
     boxLines.push(wrapLine(''));
     boxLines.push(wrapLine(`  ${C.darkGray}${'─'.repeat(innerW - 4)}${C.reset}`));
-    boxLines.push(wrapLine(`  ${C.gray}Hemen indirmek için ${C.white}[1]${C.gray} veya ${C.white}[Enter]${C.gray}'e basın  ·  ${C.white}[Esc]${C.gray} İptal${C.reset}`));
+    boxLines.push(wrapLine(`  ${C.gray}Kurmak için ${C.white}[1]${C.gray} veya ${C.white}[Enter]${C.gray}'a basın  ·  ${C.white}[Esc]${C.gray} İptal${C.reset}`));
     boxLines.push(padVisible(`${padLeft}${C.brightRed}╰${'─'.repeat(modalW - 2)}╯${C.reset}`, totalCols));
   }
 
@@ -293,7 +292,7 @@ function draw(state) {
     : `${C.spotifyGreen}● ${C.white}${C.bold}${accountLabel}${C.reset}${goldText}${studyText} `;
 
   const headerTitle = ` 📻 ${C.bold}${C.white}RADIOTEDU${C.reset} ${C.red}//${C.reset} ${C.gray}STUDIO CONSOLE${C.reset} `;
-  const headerRight = `${C.darkGray}v1.3.7 ─╮${C.reset}`;
+  const headerRight = `${C.darkGray}v1.4.4 ─╮${C.reset}`;
   const fillHeader = Math.max(0, totalCols - stripAnsi(headerTitle).length - stripAnsi(headerRight).length - 2);
 
   lines.push(`${C.slateBorder}╭─${C.reset}${headerTitle}${C.slateBorder}${'─'.repeat(fillHeader)}${C.reset}${headerRight}`);
@@ -400,10 +399,10 @@ function draw(state) {
         // Diagnostics & Heartbeat
         const bufGauge = isPlayingAudio ? `${C.spotifyGreen}[██████████]${C.reset}` : `${C.darkGray}[░░░░░░░░░░]${C.reset}`;
         const goldStatus = state.account?.gold !== null ? `${C.gold}+1 Gold/30s${C.reset}` : `${C.darkGray}Sign in for Gold${C.reset}`;
-        const engineText = state.playerName
-          ? `${C.white}${state.playerName}${C.reset}`
-          : `${C.brightRed}None (winget install Gyan.FFmpeg)${C.reset}`;
-        rightContent = `  ${C.gray}Buffer: ${bufGauge} · Heartbeat: ${goldStatus} · Engine: ${engineText}`;
+        const soundText = state.playerName
+          ? `${C.spotifyGreen}Hazır${C.reset}`
+          : `${C.yellow}Kurulum gerekli ([Enter])${C.reset}`;
+        rightContent = `  ${C.gray}Buffer: ${bufGauge} · Heartbeat: ${goldStatus} · Ses: ${soundText}`;
       }
 
       lines.push(`${C.slateBorder}│${C.reset}${leftContent}${C.slateBorder}│${C.reset} ${C.slateBorder}│${C.reset}${padVisible(rightContent, rightW)}${C.slateBorder}│${C.reset}`);
@@ -582,7 +581,7 @@ function draw(state) {
   const telemetryInfo = isPlaying
     ? `${onAirPill}   ${C.darkGray}·${C.reset}   ${C.gray}Continuous Stream: ${C.white}${sessionTime}${C.reset}   ${C.darkGray}·${C.reset}   ${C.gray}Health: ${signalBars}`
     : (!state.playerName
-      ? `${C.brightRed}⚠️ NO AUDIO ENGINE${C.reset}   ${C.darkGray}·${C.reset}   ${C.yellow}Run: ${C.white}winget install Gyan.FFmpeg${C.yellow} to listen${C.reset}`
+      ? `${C.yellow}⚠️ Ses kurulumu gerekli${C.reset}   ${C.darkGray}·${C.reset}   ${C.white}[Enter]${C.gray} ile tek dokunuşla kur${C.reset}`
       : `${onAirPill}   ${C.darkGray}·${C.reset}   ${C.gray}Broadcasting 24/7 from RadioTEDU Ankara Studios · Press [Space] to play${C.reset}`);
 
   lines.push(`${C.slateBorder}╭─ NOW PLAYING // LIVE BROADCAST ${'─'.repeat(Math.max(0, totalCols - 34))}╮${C.reset}`);
@@ -808,19 +807,19 @@ async function runTui({
         if (event.type === 'key') {
           if (state.modal.type === 'audio_engine_missing') {
             if (event.key === '1' || event.key === 'enter') {
-              state.modal.status = 'Ses motoru indiriliyor, lütfen bekleyin...';
+              state.modal.status = 'Ses hazırlanıyor, lütfen bekleyin...';
               render();
               try {
                 const downloaded = await onEnsureAudio?.(state);
                 if (downloaded) {
                   state.playerName = downloaded.replace(/^.*[\\/]/, '');
                   state.modal = null;
-                  state.status = 'Ses motoru başarıyla kuruldu!';
+                  state.status = 'Ses hazır! Keyifli dinlemeler.';
                   if (state.stations?.[state.selected]) {
                     await onPlay(state.stations[state.selected], state);
                   }
                 } else {
-                  state.modal.status = 'İndirme tamamlanamadı. winget install Gyan.FFmpeg deneyin.';
+                  state.modal.status = 'İndirme tamamlanamadı. İnterneti kontrol edip tekrar deneyin.';
                 }
               } catch (err) {
                 state.modal.status = `Hata: ${err.message}`;

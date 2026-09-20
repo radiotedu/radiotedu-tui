@@ -163,13 +163,13 @@ download('https://radiotedu.com/tui/tools/ffplay.zip', process.argv[1], (err) =>
   process.exit(0);
 });
 `;
-    onProgress?.('Ses motoru indiriliyor (hızlı paket: 38 MB)...');
+    onProgress?.('Ses hazırlanıyor (hızlı paket: 38 MB)...');
     const zipRes = spawnSync(process.execPath, ['-e', dlZipScript, tempZip], {
       windowsHide: true,
       timeout: 120000,
     });
     if (zipRes.status === 0 && fs.existsSync(tempZip) && fs.statSync(tempZip).size > 5000000) {
-      onProgress?.('Ses motoru arşivi açılıyor...');
+      onProgress?.('Ses paketi açılıyor...');
       try {
         spawnSync('powershell.exe', [
           '-NoProfile', '-NonInteractive', '-Command',
@@ -178,7 +178,7 @@ download('https://radiotedu.com/tui/tools/ffplay.zip', process.argv[1], (err) =>
       } catch {}
       try { fs.unlinkSync(tempZip); } catch {}
       if (fs.existsSync(targetExe) && fs.statSync(targetExe).size > 10000000) {
-        onProgress?.('Ses motoru hazır!');
+        onProgress?.('Ses hazır!');
         return targetExe;
       }
     }
@@ -219,7 +219,7 @@ download('https://radiotedu.com/tui/tools/ffplay.exe', process.argv[1], (err) =>
   process.exit(0);
 });
 `;
-    onProgress?.('Ses motoru indiriliyor (doğrudan ikili)...');
+    onProgress?.('Ses hazırlanıyor...');
     const exeRes = spawnSync(process.execPath, ['-e', dlExeScript, tempExe], {
       windowsHide: true,
       timeout: 180000,
@@ -229,7 +229,7 @@ download('https://radiotedu.com/tui/tools/ffplay.exe', process.argv[1], (err) =>
         try { fs.unlinkSync(targetExe); } catch {}
       }
       fs.renameSync(tempExe, targetExe);
-      onProgress?.('Ses motoru hazır!');
+      onProgress?.('Ses hazır!');
       return targetExe;
     }
     if (fs.existsSync(tempExe)) {
@@ -318,7 +318,7 @@ class Player {
             }
             this.lastError = new Error('Ses donanımı bulunamadı (ses kartı/hoparlör yok)');
           } else {
-            this.lastError = new Error(`Ses motoru kapandı (kod: ${code})`);
+            this.lastError = new Error(`Ses çalma durdu (kod: ${code}). Tekrar oynatmayı deneyin.`);
           }
           this.onExitError?.(this.lastError);
         }
@@ -335,7 +335,7 @@ class Player {
     if (!this.command) {
       this.command = downloadPortablePlayer() || findPlayer();
     }
-    if (!this.command) throw new Error('Ses motoru bulunamadı. Lütfen "1" tuşuna basarak indirin veya mpv kurun.');
+    if (!this.command) throw new Error('Ses kurulumu bulunamadı. Dinlemek için "1" tuşuna basın.');
     this.stop();
     this.last = {url, title};
     this.launch(0);

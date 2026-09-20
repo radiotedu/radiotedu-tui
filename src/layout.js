@@ -83,7 +83,7 @@ function buildFrame(state, {columns = 100, rows = 30} = {}) {
       add(' STREAM HEALTH & BITRATE DIAGNOSTICS', 'brand');
       add(` Station:      ${d.stationName || 'RadioTEDU'} (${d.mount || '/radiotedu'})`);
       add(` Format:       ${d.quality || 'NORMAL'} · ${d.codec || 'HE-AAC v2'} · ${d.bitrate || '64 kbps'}`);
-      add(` Decoder:      ${d.engine || 'ffplay'} · Status: ${d.playbackStatus || 'Active'}`);
+      add(` Ses:          ${d.playbackStatus || 'Hazır'}`);
       add(` Buffer:       ${d.bufferHealth || '100%'} · Latency: ${d.estimatedLatency || '~42 ms'}`);
       add(` DSP Norm:     ${d.dsp || 'OFF'} (EBU R128 · -16 LUFS)`);
       add(` Controls:     ${d.mediaControls || 'Active'}`);
@@ -106,8 +106,8 @@ function buildFrame(state, {columns = 100, rows = 30} = {}) {
         add(` Code: ${modal.code || ''}`, 'brand');
         buttons([['[Enter] Connect', 'enter']]);
       } else if (modal.type === 'audio_engine_missing') {
-        add(' Install an audio engine to listen.');
-        buttons([['[1] Download portable ffplay', '1'], ['[2] Install with winget', '2']]);
+        add(' Dinlemek için tek dokunuşluk ses kurulumu gerekli.');
+        buttons([['[1] Sesi otomatik kur', '1']]);
       }
       add(modal.status || '', 'muted');
       buttons([['[Esc] Cancel', 'escape']]);
@@ -143,7 +143,7 @@ function buildFrame(state, {columns = 100, rows = 30} = {}) {
       }
     } else if (tab === 2) {
       add(' AUDIO / OUTPUT', 'brand');
-      add(` Engine    ${state.playerName || 'Not installed'}`);
+      add(` Ses       ${state.playerName ? 'Hazır' : 'Kurulum gerekli'}`);
       add(` Format    ${state.active ? `${state.codec} / ${state.quality}` : 'No active stream'}`);
       add(` Volume    ${state.volume ?? 80}%`);
       add(` Sleep     ${state.sleepDeadline ? `${Math.max(0, Math.ceil((state.sleepDeadline - Date.now()) / 60000))} min remaining` : 'Off'}`);

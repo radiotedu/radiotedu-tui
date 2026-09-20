@@ -17,7 +17,7 @@ node src/index.js
 
 - Sıfır runtime bağımlılık: yeni npm dependency eklemeyin.
 - Mevcut stili koruyun: CommonJS, 2-space, ASCII + seçici emoji.
-- `src/tui.js` görsel mimaridir; `src/layout.js` + `src/listening.js` legacy 1.3.11 arama/favori/uyku motorudur. İkisini de bozmayın.
+- `src/tui.js` görsel mimaridir; `src/layout.js` + `src/listening.js` legacy 1.3.11 arama/favori/uyku modülüdür. İkisini de bozmayın.
 - Test eklemeden davranış değiştirmeyin: `npm test` 29 pass / 1 skip çizgisini koruyun.
 - Güvenlik: token, parola, Gold üretimi client'ta yapmayın. PKCE + nonce/heartbeat sunucudadır.
 

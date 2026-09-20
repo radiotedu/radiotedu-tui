@@ -27,6 +27,6 @@
 <text x="48" y="510" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">$ radiotedu login --code=AAAA-BBBB  # ERP pairing</text>
 <text x="48" y="536" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">$ radiotedu study start library 45  # + Gold on verify</text>
 <text x="48" y="566" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">$ radiotedu gold  ·  $ radiotedu account  ·  $ radiotedu logout</text>
-<text x="48" y="606" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">Zero npm runtime deps · Node 18+ · Linux / macOS / Windows · mpv or ffplay (auto-fetch)</text>
+<text x="48" y="606" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">Zero npm runtime deps · Node 18+ · Linux / macOS / Windows · automatic audio setup</text>
 <text x="48" y="634" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">Sleep timer Z · Favorites * / G · Search / · Focus T · 1/2/3/4 tabs · mouse SGR 1006</text>
 </svg>

@@ -2,9 +2,9 @@
 
 # 📻 radiotedu-tui
 
-**Spotify-TUI esintili terminal istemcisi — 32-bant gerçek zamanlı ses spektrumu, Focus Pomodoro salonu, sunucu-doğrulamalı Gold dinleme motoru ve kampüs Study arkadaşı.**
+**Spotify-TUI esintili terminal istemcisi — 32-bant gerçek zamanlı ses spektrumu, Focus Pomodoro salonu, sunucu-doğrulamalı Gold ödülleri ve kampüs Study arkadaşı.**
 
-**The Spotify-TUI inspired terminal client, 32-band real-time audio spectrum visualizer, Focus Pomodoro lounge, server-verified Gold listening engine, and campus Study companion for RadioTEDU.**
+**The Spotify-TUI inspired terminal client, 32-band real-time audio spectrum visualizer, Focus Pomodoro lounge, server-verified Gold rewards, and campus Study companion for RadioTEDU.**
 
 [![Version](https://img.shields.io/badge/version-v1.4.4-brightgreen.svg?style=flat-square)](package.json)
 [![CI](https://github.com/radiotedu/radiotedu-tui/actions/workflows/ci.yml/badge.svg)](https://github.com/radiotedu/radiotedu-tui/actions/workflows/ci.yml)
@@ -98,7 +98,7 @@
 │   ● English       Campus English  │                                                                           │
 │   ● Français      Campus French   │   Station : Jazz (FLAC) · 24-bit 96kHz Lossless                           │
 │   ● Voting        Audience Vote   │   Track   : Miles Davis - So What                                         │
-│                                   │   Engine  : mpv · Buffer Healthy · Normal Latency                         │
+│                                   │   Ses     : Hazır · Buffer Healthy · Normal Latency                         │
 ├───────────────────────────────────┴───────────────────────────────────────────────────────────────────────────┤
 │ NOW PLAYING: Miles Davis - So What                                                                            │
 │ 04:12 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━●────────────────────────────────────────────── 60:00 [● LIVE]        │
@@ -207,7 +207,7 @@ radiotedu login --code=AAAA-BBBB
 | `m` | Sessiz aç/kapat |
 | `f` | Kalite döngüsü (`Normal` ↔ `Low` ↔ `FLAC`) |
 
-### Listening Tools (legacy 1.3.11 motoru, `src/listening.js`)
+### Listening Tools (legacy 1.3.11 modülü, `src/listening.js`)
 
 | Shortcut | Action |
 | :--- | :--- |
@@ -377,7 +377,7 @@ radiotedu-tui/
 │   ├── index.js              # CLI router, argümanlar, TUI orkestrasyonu
 │   ├── tui.js                # v1.4.4 visualizer dashboard (render, mouse, modal)
 │   ├── layout.js             # v1.3.11 responsive frame builder (mouse hit-targets)
-│   ├── listening.js          # v1.3.11 arama/favori/uyku motoru
+│   ├── listening.js          # v1.3.11 arama/favori/uyku modülü
 │   ├── player.js             # mpv/ffplay lifecycle, portable fetch
 │   ├── stations.js           # Kayıt, mount, codec, alias (cazz)
 │   ├── api.js                # Auth, ERP, Gold, Study REST istemcisi
