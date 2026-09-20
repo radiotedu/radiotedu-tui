@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" role="img" aria-label="radiotedu-tui account and study">
+<rect width="1200" height="700" rx="16" fill="#0f1117"/>
+<rect x="0" y="0" width="1200" height="52" rx="16" fill="#171a23"/>
+<circle cx="36" cy="26" r="8" fill="#ff5f57"/><circle cx="60" cy="26" r="8" fill="#febc2e"/><circle cx="84" cy="26" r="8" fill="#28c840"/>
+<text x="116" y="33" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#9aa4b2">radiotedu — [3: Study] + [4: Account] · Gold &amp; Focus</text>
+<rect x="24" y="72" width="560" height="300" rx="10" fill="#151823"/>
+<text x="48" y="108" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#e5e9f0">FOCUS POMODORO — TEDU Library</text>
+<text x="48" y="150" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="52" fill="#1ed760">24:59</text>
+<text x="48" y="182" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">phase: focus · preset: 25/5 · ▓▓▓▓▓▓▓░░░ 68%</text>
+<text x="48" y="216" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">[S] start/pause   [P] preset   [B] phase   [R] reset</text>
+<text x="48" y="250" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">today: 2 pomodoros · 50 study min · streak 6 days</text>
+<text x="48" y="300" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="15" fill="#62687f">Study API: radiotedu study start library 45</text>
+<rect x="600" y="72" width="576" height="300" rx="10" fill="#1a1e2e"/>
+<text x="624" y="108" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#f1c40f">ACCOUNT — 420 Gold (server-verified)</text>
+<text x="624" y="142" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">Member: RadioTEDU Member</text>
+<text x="624" y="168" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">Listening: +20 Gold / hour · nonce heartbeat</text>
+<text x="624" y="194" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">Tokens: 0600 file mask · PKCE S256 · no mint</text>
+<rect x="624" y="214" width="528" height="120" rx="8" fill="#0f1117"/>
+<text x="640" y="242" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="15" fill="#e5e9f0">SIGN IN // HESAP GIRISI</text>
+<text x="640" y="266" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#8be9fd">[1] Web ile Hizli Oturum Ac (onerilen)</text>
+<text x="640" y="288" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#e5e9f0">[2] RadioTEDU Hesabi (E-Posta &amp; Sifre)</text>
+<text x="640" y="310" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#f1c40f">[3] TEDU / ERP (AAAA-BBBB)</text>
+<rect x="24" y="388" width="1152" height="288" rx="10" fill="#151823"/>
+<text x="48" y="424" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">HEADLESS CLI — same binary, scriptable</text>
+<text x="48" y="458" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#50fa7b">$ radiotedu stations --json</text>
+<text x="48" y="484" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">$ radiotedu play classic --quality=flac --player=mpv</text>
+<text x="48" y="510" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">$ radiotedu login --code=AAAA-BBBB  # ERP pairing</text>
+<text x="48" y="536" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">$ radiotedu study start library 45  # + Gold on verify</text>
+<text x="48" y="566" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">$ radiotedu gold  ·  $ radiotedu account  ·  $ radiotedu logout</text>
+<text x="48" y="606" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">Zero npm runtime deps · Node 18+ · Linux / macOS / Windows · mpv or ffplay (auto-fetch)</text>
+<text x="48" y="634" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">Sleep timer Z · Favorites * / G · Search / · Focus T · 1/2/3/4 tabs · mouse SGR 1006</text>
+</svg>

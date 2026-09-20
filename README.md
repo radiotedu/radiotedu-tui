@@ -2,9 +2,13 @@
 
 # 📻 radiotedu-tui
 
+**Spotify-TUI esintili terminal istemcisi — 32-bant gerçek zamanlı ses spektrumu, Focus Pomodoro salonu, sunucu-doğrulamalı Gold dinleme motoru ve kampüs Study arkadaşı.**
+
 **The Spotify-TUI inspired terminal client, 32-band real-time audio spectrum visualizer, Focus Pomodoro lounge, server-verified Gold listening engine, and campus Study companion for RadioTEDU.**
 
 [![Version](https://img.shields.io/badge/version-v1.4.4-brightgreen.svg?style=flat-square)](package.json)
+[![CI](https://github.com/radiotedu/radiotedu-tui/actions/workflows/ci.yml/badge.svg)](https://github.com/radiotedu/radiotedu-tui/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/tests-29_passed_1_skipped-success.svg?style=flat-square)](test/)
 [![Organization](https://img.shields.io/badge/organization-RadioTEDU-red.svg?style=flat-square)](https://radiotedu.com)
 [![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-informational.svg?style=flat-square&logo=node.js)](https://nodejs.org)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey.svg?style=flat-square)](https://github.com/radiotedu/radiotedu-tui)
@@ -13,35 +17,67 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 [🚀 Quick Start](#-installation--quick-start) •
-[🎨 Interface Layout](#-interface-layout) •
-[⌨️ Controls](#-keyboard-shortcuts--controls) •
-[🖱️ Mouse Support](#-mouse-controls) •
+[📸 Screenshots](#-screenshots) •
+[🎨 Interface](#-interface-layout) •
+[⌨️ Controls](#️-keyboard-shortcuts--controls) •
+[🖱️ Mouse](#-mouse-controls) •
 [📻 Stations & FLAC](#-stations--stream-qualities) •
-[🔐 Authentication & SSO](#-authentication--erp-sso) •
-[⚡ CLI Mode](#-headless-cli-commands) •
-[📻 Organization](#-organization--community)
+[🔐 Auth & SSO](#-authentication--erp-sso) •
+[⚡ CLI](#-headless-cli-commands) •
+[🧪 Tests](#-testing--code-quality) •
+[📂 Structure](#-project-structure)
 
 </div>
 
 ---
 
+## 📸 Screenshots
+
+> Tüm görseller `docs/screenshots/` altındadır. Uçbirimde **Cascadia Mono** veya **JetBrains Mono** kullanın; uygulama host fontuna saygı duyar.
+
+### 1 — Stations Dashboard (`[1: Stations]`)
+
+![Stations dashboard — 9 channels, live spectrum, playbar](docs/screenshots/stations.svg)
+
+- Sol: 9 kanal, tek kolon, yumuşak seçim vurgusu.
+- Sağ: canlı spektrum + stream bilgisi (codec, engine, buffer).
+- Alt: sabit playback footer — ilerleme çubuğu, ses kaydırıcısı, aksiyon hapları.
+
+### 2 — Fullscreen Visualizer (`[2: Visualizer]` + `v`)
+
+![Fullscreen 32-band visualizer](docs/screenshots/visualizer.svg)
+
+- 32-bant `cava` tarzı ekolayzer: sub-bass / mid / tiz simülasyonu.
+- Peak-hold decay noktaları + frekans ekseni (`60Hz` → `16kHz`).
+- `v` ile fullscreen, `Tab` ile panel odağı.
+
+### 3 — Study + Account (`[3: Study]` / `[4: Account]`)
+
+![Focus Pomodoro, Gold account, CLI](docs/screenshots/account-study.svg)
+
+- Focus Pomodoro (25/5, 50/10), TEDÜ Kütüphane / Çim Alan Study takibi.
+- Server-verified Gold (+20 / saat), PKCE cihaz eşleştirme, maskeli parola.
+- Aynı binary headless CLI olarak da çalışır (`stations`, `play`, `login`, `study`, `gold`).
+
+---
+
 ## 🌟 Overview
 
-`radiotedu-tui` brings the sleek aesthetic of [Rigellute/spotify-tui](https://github.com/Rigellute/spotify-tui) and the modern OpenCode / Catppuccin palette to your terminal. Stream campus live broadcasts, enjoy **Lossless 24-bit FLAC** audio on Classical and Jazz channels, watch a real-time animated graphic equalizer, track Study & Focus Pomodoro sessions in TED University campus areas, and earn server-verified RadioTEDU Gold rewards—all with **zero external npm runtime dependencies**.
+`radiotedu-tui`, [Rigellute/spotify-tui](https://github.com/Rigellute/spotify-tui) estetiğini ve modern OpenCode / Catppuccin paletini terminalinize taşır. Kampüs canlı yayınlarını dinleyin, Classical ve Jazz kanallarında **Lossless 24-bit FLAC** keyfi sürün, gerçek zamanlı animasyonlu ekolayzeri izleyin, TED Üniversitesi kampüs alanlarında Study & Focus Pomodoro takip edin ve sunucu-doğrulamalı RadioTEDU Gold kazanın — tamamı **sıfır harici npm runtime bağımlılığı** ile.
 
 ### Key Highlights
 
-- 🎛️ **Multi-Pane TUI Dashboard**: Tabbed interface (`[1: Stations]`, `[2: Visualizer]`, `[3: Study & Lyrics]`, `[4: Account]`) with smooth layout adaptation for any terminal size (min 96 columns).
-- 📊 **32-Band Audio Spectrum Visualizer**: Dynamic multi-octave harmonic audio equalizer (`cava` style) with sub-bass, mid, and treble simulation, peak-hold decay dots, and labeled frequency axis (`60Hz` to `16kHz`).
-- 🎵 **Pristine Audio Streaming**: Support for **FLAC 24-bit Hi-Fi**, HE-AAC v2, AAC-LC, MP3, and Ogg/Opus streams.
-- 🔊 **Zero-Config Audio Auto-Download**: Automatically detects `mpv` or `ffplay`. If neither is found, `radiotedu-tui` automatically downloads a lightweight, audio-only `ffplay` binary on first launch (Windows & Linux).
-- 🖱️ **Full Mouse & Keyboard Integration**: Native 1006 SGR mouse support (click to play stations, switch tabs, drag/click volume slider, trigger control action pills) alongside intuitive keyboard shortcuts.
-- 🔐 **Secure Dual Authentication**:
-  - Direct **RadioTEDU Account** login via an interactive terminal modal with masked password input.
-  - **TED University ERP SSO** with an instant 8-character device pairing code (`AAAA-BBBB` at `radiotedu.com/erp/device`) and RFC 7636 PKCE S256 challenge security.
-- 🪙 **Server-Verified Gold Listening**: Listening proof engine with rotating cryptographic nonces and heartbeat verification—no client-side minting or tampering (+20 Gold / hour).
-- 📚 **Focus Pomodoro & Study Companion**: Built-in 25/5 and 50/10 Focus Pomodoro timer and Study tracker for TEDU Library and Çim Alan, linked directly with user account stats.
-- ⚡ **Ultra-Lightweight & Cross-Platform**: Runs natively on Linux, macOS, and Windows with 0 npm bloat using standard Node.js 18+ runtime APIs.
+- 🎛️ **Multi-Pane TUI Dashboard**: Sekmeli arayüz (`[1: Stations]`, `[2: Visualizer]`, `[3: Study & Lyrics]`, `[4: Account]`), her terminal ölçüsüne akıcı uyum.
+- 📊 **32-Band Audio Spectrum Visualizer**: Çok oktavlı harmonik ekolayzer, peak-hold noktaları, etiketli frekans ekseni.
+- 🎵 **Pristine Audio Streaming**: **FLAC 24-bit Hi-Fi**, HE-AAC v2, AAC-LC, MP3 ve Ogg/Opus.
+- 🔊 **Zero-Config Audio Auto-Download**: `mpv` veya `ffplay` otomatik bulunur; yoksa ilk açılışta hafif ses-only `ffplay` indirilir (Windows & Linux, onaylı).
+- 🖱️ **Full Mouse & Keyboard**: Native 1006 SGR mouse (sekmeye tıkla, istasyona tıkla-çal, ses kaydırıcısı, hap butonlar) + klavye.
+- 🔍 **Listening Tools** (`src/listening.js`, `rtai-mobile/terminal` v1.3.11'den): `/` arama, `*`/`G` favoriler (`listening-preferences.json`, kimlikten izole), `Z` uyku zamanlayıcı (15/30/60/90/kapalı, deadline tabanlı, duraklatılmış akışı asla devam ettirmez), `?` klavye rehberi, `T` Focus.
+- 🔐 **Secure Dual Auth**: İnteraktif modal ile RadioTEDU hesabı + 8-karakter ERP cihaz kodu (`AAAA-BBBB`), RFC 7636 PKCE S256.
+- 🪙 **Server-Verified Gold**: Dönen nonce + heartbeat ile dinleme kanıtı — client-side mint yok (+20 Gold / saat).
+- 📚 **Focus & Study**: 25/5 ve 50/10 Pomodoro + TEDU Library / Çim Alan Study, hesap istatistiklerine bağlı.
+- 🧩 **Platform Bridges** (`lib/`): Windows SMTC, Linux MPRIS, birleşik media-controls dispatcher, DSP loudness normalizasyonu (EBU R128), stream diagnostics, Wrapped özeti.
+- ⚡ **Ultra-Lightweight**: Linux, macOS, Windows; Node.js 18+ standart API'ler, 0 npm şişkinliği.
 
 ---
 
@@ -71,6 +107,8 @@
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
+Tasarım notları: kömür grisi zemin, sıcak beyaz metin, ölçülü mercan vurgusu. Her genişlikte tek kolon istasyon listesi, seçimde yumuşak vurgu, aktif sekmede renkli alt çizgi, navigasyon ile sabit footer arasında ince çizgiler. İkincil kontroller ilgili görünümde kalır. Düzen terminal ölçüsünü takip eder, seçimi görünür alana kaydırır ve çıkışta shell'i geri yükler. Audio görünümü seçili stream formatını ve player durumunu raporlar; sinyal gücü / bit derinliği / canlı spektrum ölçümü iddia etmez. Gold sunucudan gelir; yerel focus zamanlayıcıyı bitirmek ödül üretmez.
+
 ---
 
 ## 🚀 Installation & Quick Start
@@ -78,20 +116,18 @@
 ### Prerequisites
 
 1. **Node.js**: Version 18.0.0 or higher.
-2. **Audio Player Engine**: Supported engines are `mpv` (recommended) or `ffplay`. *(If neither is installed, `radiotedu-tui` automatically downloads a lightweight `ffplay` audio binary for you on Windows & Linux).*
+2. **Audio Player Engine**: `mpv` (önerilen) veya `ffplay`. *(Bulunamazsa `radiotedu-tui` ilk açılışta onayınızla hafif `ffplay` indirir — Windows & Linux).*
 
 ---
 
 ### Option 1: Windows Installation (CMD & PowerShell)
 
-Direct global installation via npm (Zero antivirus false-positives, no execution policy bypass required):
-
 ```bash
 npm install -g https://radiotedu.com/tui/radiotedu-tui.tgz
 ```
-*(If Node.js is not yet installed: `winget install OpenJS.NodeJS.LTS`)*
+*(Node.js yoksa: `winget install OpenJS.NodeJS.LTS`)*
 
-Alternatively, using PowerShell:
+Alternatif PowerShell:
 
 ```powershell
 irm https://radiotedu.com/install.ps1 -OutFile install.ps1; .\install.ps1
@@ -100,8 +136,6 @@ irm https://radiotedu.com/install.ps1 -OutFile install.ps1; .\install.ps1
 ---
 
 ### Option 2: Linux & macOS Installation
-
-Use the automated curl installer script:
 
 ```bash
 curl -sSL https://radiotedu.com/install.sh | bash
@@ -112,8 +146,6 @@ curl -fsSL https://raw.githubusercontent.com/radiotedu/radiotedu-tui/main/instal
 ---
 
 ### Option 3: Universal npm / Git Install
-
-Install globally from the official Git repository:
 
 ```bash
 npm install -g git+https://github.com/radiotedu/radiotedu-tui.git
@@ -127,13 +159,13 @@ npm install -g git+https://github.com/radiotedu/radiotedu-tui.git
 git clone https://github.com/radiotedu/radiotedu-tui.git
 cd radiotedu-tui
 node src/index.js
+# veya: npm start
+# veya shim: node bin/index.js
 ```
 
 ---
 
 ### Launching the Player
-
-Run from anywhere in your shell:
 
 ```bash
 radiotedu
@@ -141,11 +173,11 @@ radiotedu
 radiotedu-tui
 ```
 
-To pair with your RadioTEDU or TEDÜ ERP account to unlock Gold rewards (+20 Gold / hour):
+Gold için RadioTEDU / TEDÜ ERP eşleştirme (+20 Gold / saat):
 
 ```bash
 radiotedu login
-# or directly with your 8-digit code from https://radiotedu.com/erp/device
+# veya https://radiotedu.com/erp/device adresindeki 8-haneli kodla:
 radiotedu login --code=AAAA-BBBB
 ```
 
@@ -157,54 +189,64 @@ radiotedu login --code=AAAA-BBBB
 
 | Shortcut | Action |
 | :--- | :--- |
-| `1` | Switch to **Tab 1: Stations & Spectrum** |
-| `2` | Switch to **Tab 2: Fullscreen Audio Visualizer** |
-| `3` | Switch to **Tab 3: Campus Study Timer & Lyrics** |
-| `4` | Switch to **Tab 4: Account & Gold Balance** |
-| `Tab` | Cycle active focus between interface panels |
-| `v` | Quick-toggle fullscreen visualizer mode |
+| `1` | **Tab 1: Stations & Spectrum** |
+| `2` | **Tab 2: Fullscreen Audio Visualizer** |
+| `3` | **Tab 3: Campus Study Timer & Lyrics** |
+| `4` | **Tab 4: Account & Gold Balance** |
+| `Tab` | Panel odağını döndür |
+| `v` | Fullscreen visualizer aç/kapat |
 
 ### Playback & Audio
 
 | Shortcut | Action |
 | :--- | :--- |
-| `↑` / `↓` &nbsp;or&nbsp; `k` / `j` | Navigate station list cursor |
-| `Enter` | Play selected station immediately |
-| `Space` &nbsp;or&nbsp; `p` | Toggle Play / Pause |
-| `+` / `-` &nbsp;or&nbsp; `=` / `_` | Increase / Decrease volume (±5%) |
-| `m` | Mute / Unmute audio |
-| `f` | Toggle Audio Stream Quality (`Normal` ↔ `Low` ↔ `FLAC`) |
+| `↑` / `↓` or `k` / `j` | İstasyon imleci |
+| `Enter` | Seçili istasyonu hemen çal |
+| `Space` or `p` | Oynat / Duraklat |
+| `+` / `-` or `=` / `_` | Ses ±%5 |
+| `m` | Sessiz aç/kapat |
+| `f` | Kalite döngüsü (`Normal` ↔ `Low` ↔ `FLAC`) |
 
-### Account & Session Management
+### Listening Tools (legacy 1.3.11 motoru, `src/listening.js`)
 
 | Shortcut | Action |
 | :--- | :--- |
-| `l` | Open Sign In Modal Dialog (RadioTEDU Account or TEDÜ ERP SSO) |
-| `x` | Sign Out cleanly |
-| `a` | Force-refresh account data & spendable Gold points |
-| `s` | Start / Stop Focus & Study Session |
-| `q` &nbsp;or&nbsp; `Ctrl+C` | Stop audio and exit application cleanly |
+| `/` | İstasyon adı/açıklamasında ara; `Enter` bitirir, `Esc` temizler |
+| `*` | Favori ekle/çıkar; `G` tümü/favoriler görünümü (`listening-preferences.json`) |
+| `Z` | Uyku zamanlayıcı: 15 → 30 → 60 → 90 → kapalı (süre dolunca duraklatır, asla devam ettirmez) |
+| `?` | Klavye rehberi |
+| `T` | Focus zamanlayıcıyı başlat/duraklat |
+
+### Account & Session
+
+| Shortcut | Action |
+| :--- | :--- |
+| `l` | Giriş modalı (RadioTEDU veya TEDÜ ERP SSO) |
+| `x` | Temiz çıkış (sign out) |
+| `a` | Hesap + Gold bakiyesini yenile |
+| `s` | Focus & Study oturumu başlat/durdur |
+| `q` or `Ctrl+C` | Sesi durdur, temiz çık |
 
 ---
 
 ## 🖱️ Mouse Controls
 
-`radiotedu-tui` comes with first-class SGR mouse tracking:
+SGR 1006 mouse:
 
-- **Switch Tabs**: Click on `[1: Stations]`, `[2: Visualizer]`, `[3: Study & Lyrics]`, or `[4: Account]` to change tabs instantly.
-- **Select & Play**: Click directly on any station row to tune in immediately.
-- **Scroll Stations**: Use the mouse scroll wheel over the station panel to scroll smoothly.
-- **Toggle Playback**: Click on the track metadata or playbar to toggle between Play and Pause.
-- **Interactive Volume Slider**: Click anywhere along the volume meter bar `[████████░░]` to jump straight to that volume level.
-- **Action Buttons**: Click on any bottom button pill (`[Space]`, `[F]`, `[+]`, `[-]`, `[L]`, `[S]`, `[Q]`) to trigger its action.
+- **Sekmeler**: `[1: Stations]`, `[2: Visualizer]`, `[3: Study & Lyrics]`, `[4: Account]` tıklanabilir.
+- **Çal**: İstasyon satırına tıkla → anında akort.
+- **Kaydır**: İstasyon panelinde tekerlek ile yumuşak kaydırma.
+- **Oynat/Duraklat**: Parça metasına veya playbar'a tıkla.
+- **Ses**: `[████████░░]` çubuğunda tıkladığın seviyeye atla.
+- **Haplar**: `[Space]`, `[F]`, `[+]`, `[-]`, `[L]`, `[S]`, `[Q]` tıklanabilir.
 
 ---
 
 ## 📻 Stations & Stream Qualities
 
-RadioTEDU broadcasts across 9 official mounts, supporting multi-quality fallback and lossless audiophile delivery:
+9 resmi mount, çok kaliteli fallback + odyofil lossless:
 
-| Station | Genre / Purpose | Qualities Supported | Default Codec | Lossless FLAC |
+| Station | Genre / Purpose | Qualities | Default Codec | Lossless FLAC |
 | :--- | :--- | :--- | :--- | :---: |
 | **RadioTEDU** | Flagship Campus Channel | `Normal`, `Low` | HE-AAC v2 | — |
 | **Classical** | Symphonic, Concerto & Chamber | `Normal`, `Low`, `FLAC` | FLAC 24-bit | ✅ **24-bit Hi-Fi** |
@@ -216,13 +258,13 @@ RadioTEDU broadcasts across 9 official mounts, supporting multi-quality fallback
 | **Français** | French Language Broadcast | `Normal` | MP3 192k | — |
 | **Voting** | Interactive live listener-voted stream | `Normal` | Ogg/Opus | — |
 
-> 💡 **Tip**: Press `f` or click `[F]` to cycle through available stream qualities. When tuning to `FLAC` on metered connections, confirmation is requested to prevent unintended data usage.
+> 💡 **Tip**: `f` veya `[F]` ile kalite döngüsü. Ölçülü bağlantıda `FLAC` öncesi onay istenir.
 
 ---
 
-## 🔐 Authentication & Single Sign-On
+## 🔐 Authentication & ERP SSO
 
-`radiotedu-tui` provides a unified sign-in flow supporting automated browser device pairing, direct email/password login, and TEDÜ ERP SSO:
+Birleşik giriş: otomatik tarayıcı cihaz eşleştirme, e-posta/parola, TEDÜ ERP SSO:
 
 ```text
 ╭─ 🔐 RADIOTEDU SIGN IN // HESAP GİRİŞİ ────────────────────────╮
@@ -237,65 +279,41 @@ RadioTEDU broadcasts across 9 official mounts, supporting multi-quality fallback
 ╰──────────────────────────────────────────────────────────────╯
 ```
 
-### 1. Web ile Hızlı Oturum Aç (Otomatik Onay — Önerilen)
-Klavyeden `1` tuşuna basın. Terminal otomatik olarak benzersiz bir cihaz kodu üretir ve tarayıcınızda `https://radiotedu.com/device?code=ABCD-EFGH` adresini açar:
-1. Tarayıcınızda aktif RadioTEDU veya TEDÜ ERP oturumunuz varsa tek tıkla **"Cihazı Onayla"** diyerek yetki verebilirsiniz.
-2. Hesabınız yoksa aynı sayfa üzerinden saniyeler içinde yeni dinleyici hesabı oluşturabilirsiniz.
-3. Onay verdiğiniz anda terminal otomatik olarak oturumu algılar, JWT token'larını kaydeder ve Gold bakiyenizi yükler.
+### 1. Web ile Hızlı Oturum Aç (Önerilen)
+`1` → benzersiz cihaz kodu üretilir, `https://radiotedu.com/device?code=ABCD-EFGH` tarayıcıda açılır → tek tık **"Cihazı Onayla"** → terminal JWT'leri kaydeder, Gold yüklenir. Hesabın yoksa aynı sayfada saniyeler içinde oluşturulur.
 
 ### 2. RadioTEDU Hesabı (E-Posta & Şifre)
-Klavyeden `2` tuşuna basın. E-posta ve şifrenizi doğrudan terminal penceresinde girin. Şifreniz maskelenerek korunur.
+`2` → terminalde maskeli parola ile giriş.
 
-### 3. TEDÜ / ERP Eşleştirme Kodu (8 Haneli Kod)
-Klavyeden `3` tuşuna basın. Tarayıcınızda `https://radiotedu.com/erp/device` sayfası açılır, ekrandaki 8 haneli kodu terminale girerek eşleştirebilirsiniz.
+### 3. TEDÜ / ERP Kodu
+`3` → `https://radiotedu.com/erp/device` ekranındaki 8-haneli kodu gir.
 
 ### Security Architecture
 
-- **RFC 7636 PKCE (S256)**: Proof Key for Code Exchange with SHA-256 code challenge prevents authorization code interception attacks.
-- **Ephemeral Token Storage**: Credentials and tokens are saved locally in the user profile store with strict file permission masks.
-- **Heartbeat & Nonce Verification**: Gold points and study rewards are verified on the RadioTEDU backend with rotating nonces to ensure fair play.
+- **RFC 7636 PKCE (S256)**: SHA-256 code challenge, interception koruması.
+- **0600 Token Storage**: Yerel profil deposu, sıkı dosya izinleri.
+- **Nonce Heartbeat**: Gold/Study ödülleri backend'de dönen nonce ile doğrulanır.
 
 ---
 
 ## ⚡ Headless CLI Commands
 
-In addition to the interactive TUI, `radiotedu` can be used as a scriptable command-line tool:
+İnteraktif TUI dışında scriptlenebilir CLI:
 
 ```bash
-# List all stations and supported stream qualities
 radiotedu stations
-
-# Output station directory in JSON format
 radiotedu stations --json
-
-# Play Classical in 24-bit Lossless FLAC using mpv
 radiotedu play classic --quality=flac --player=mpv
-
-# Play Lo-Fi in low-bandwidth mode
 radiotedu play lofi --quality=low
-
-# Sign in to RadioTEDU or TEDÜ ERP via CLI prompt
 radiotedu login
 radiotedu login --tedu
 radiotedu login --code=AAAA-BBBB
-
-# Check current user profile & spendable Gold points
 radiotedu account
 radiotedu gold
-
-# Start a 45-minute study session at TEDU Library
 radiotedu study start library 45
-
-# Check active study session status
 radiotedu study status
-
-# Stop active study session and record earned points
 radiotedu study stop
-
-# Sign out
 radiotedu logout
-
-# Display help or version
 radiotedu help
 radiotedu --version
 ```
@@ -304,72 +322,98 @@ radiotedu --version
 
 ## 🧪 Testing & Code Quality
 
-The terminal client includes built-in test suites covering RFC vectors, audio player binary resolution, station mount contracts, and input parsing:
-
 ```bash
-# Run automated Node.js test runner suites
-npm test
-
-# Run syntax check across all JavaScript source modules
-npm run check
+npm test       # node --test → 29 passed, 1 skipped
+npm run check  # tüm src/ + lib/ + bin/ için node --check
 ```
 
-### Test Suite Coverage
+### Coverage
 
 - `✔ login, Gold balance and verified listening use existing production contracts`
 - `✔ quality mounts match RadioTEDU contract`
 - `✔ Voting stays last and uses its single live mount`
-- `✔ ffplay is detected and launched as an audio-only player`
+- `✔ ffplay/mpv/vlc args + Windows candidate paths`
 - `✔ Gold balance only accepts a non-negative server integer`
 - `✔ station aliases keep cazz as the public mount`
 - `✔ keyboard and SGR mouse input are recognized`
-- `✔ device pairing code formats 8 characters into 4-4 with hyphen`
-- `✔ PKCE S256 challenge matches RFC 7636 vector`
-- `✔ PKCE pending login round-trips through secure store`
-- `✔ PKCE pending login expires after 10 minutes`
-- `✔ authorize URL validator rejects the broken client_id-only URL`
-- `✔ authorize URL validator accepts a complete PKCE URL`
-- `✔ startErpLogin sends PKCE challenge and exchange sends verifier`
+- `✔ device pairing code 8-char 4-4 hyphen`
+- `✔ all views fit narrow/standard/wide windows`
+- `✔ scrolled click selects visible station`
+- `✔ empty space is not a selection target`
+- `✔ Unicode/hostile metadata sanitized`
+- `✔ credential view masks passwords`
+- `✔ search ignores accents, sleep deadline, favorites isolated from auth`
+- `✔ PKCE S256 RFC 7636 vector + round-trip + 10-min expiry + URL validator + ERP exchange`
+
+Legacy not: `test/listening.test.js` içindeki 1.3.11 TUI-entegrasyon vakası v1.4.4 visualizer mimarisinde `skip` — saf arama/uyku/favori mantığı tam testli.
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-terminal/
-├── README.md           # Documentation & user guide
-├── package.json        # Manifest, scripts, and bin entries
-├── install.sh          # One-line Linux/macOS curl installer script
-├── install.ps1         # Windows PowerShell installer script
+radiotedu-tui/
+├── README.md                 # Bu dosya — kurulum, ekran görüntüleri, kontroller
+├── CHANGELOG.md              # Sürüm geçmişi (1.3.11 → 1.4.4)
+├── CONTRIBUTING.md           # Katkı kuralları
+├── SECURITY.md               # Güvenlik politikası
+├── package.json              # Manifest, bin (radiotedu/radiotedu-tui), scripts
+├── install.sh                # Linux/macOS tek-satır kurulum
+├── install.ps1               # Windows PowerShell kurulum
+├── LICENSE                   # MIT
+├── .github/workflows/ci.yml  # Node 18/20/22 × ubuntu/macos/windows
+├── .gitignore / .gitattributes
+├── bin/
+│   └── index.js              # CLI shim → src/index.js (rtai-mobile/terminal'den)
+├── lib/                      # Platform köprüleri (rtai-mobile/terminal'den)
+│   ├── index.js              # SMTC + MPRIS + DSP + Wrapped + Diagnostics facade
+│   ├── smtc.js               # Windows System Media Transport Controls
+│   ├── mpris.js              # Linux MPRIS D-Bus stub/spec
+│   ├── media-controls.js     # Birleşik dispatcher (play/pause/next/prev/stop)
+│   ├── dsp.js                # EBU R128 loudness normalizasyonu
+│   ├── diagnostics.js        # Stream health / bitrate / buffer snapshot
+│   └── wrapped.js            # RadioTEDU Wrapped özeti
 ├── src/
-│   ├── index.js        # CLI router, argument parsing & TUI orchestrator
-│   ├── tui.js          # Terminal rendering, ANSI layouts, mouse & modals
-│   ├── player.js       # mpv / ffplay child process lifecycle manager
-│   ├── stations.js     # Station registry, mounts, and codec definitions
-│   ├── api.js          # REST client for auth, ERP, Gold, and Study
-│   ├── gold.js         # Nonce-verified Gold listening heartbeat engine
-│   ├── pkce.js         # RFC 7636 PKCE S256 challenge generation & storage
-│   ├── metadata.js     # Icecast stream ICY metadata reader
-│   └── store.js        # Local token persistence & session state storage
-└── test/
-    ├── api.test.js     # Auth & endpoint contracts tests
-    ├── core.test.js    # Stations, player arguments & input tests
-    └── pkce.test.js    # RFC 7636 security vector & validator tests
+│   ├── index.js              # CLI router, argümanlar, TUI orkestrasyonu
+│   ├── tui.js                # v1.4.4 visualizer dashboard (render, mouse, modal)
+│   ├── layout.js             # v1.3.11 responsive frame builder (mouse hit-targets)
+│   ├── listening.js          # v1.3.11 arama/favori/uyku motoru
+│   ├── player.js             # mpv/ffplay lifecycle, portable fetch
+│   ├── stations.js           # Kayıt, mount, codec, alias (cazz)
+│   ├── api.js                # Auth, ERP, Gold, Study REST istemcisi
+│   ├── gold.js               # Nonce-verified listening heartbeat
+│   ├── pkce.js               # RFC 7636 S256 + secure pending store
+│   ├── metadata.js           # Icecast ICY okuyucu
+│   └── store.js              # Token/study/preferences (0600), session state
+├── test/
+│   ├── api.test.js
+│   ├── core.test.js
+│   ├── layout.test.js        # Dar/standart/geniş pencere, sanitizasyon
+│   ├── listening.test.js     # Arama/uyku/favori (1 legacy skip)
+│   └── pkce.test.js
+└── docs/
+    └── screenshots/
+        ├── stations.svg      # [1: Stations] dashboard
+        ├── visualizer.svg    # [2: Visualizer] fullscreen
+        └── account-study.svg # [3/4] Study + Account + CLI
 ```
+
+Kaynak: çekirdek TUI `https://github.com/radiotedu/rtai-mobile/tree/main/terminal` (v1.3.11) → bu repo v1.4.4 visualizer mimarisiyle birleştirildi; üzerine `lib/`, `bin/`, `layout`/`listening`, testler ve dokümantasyon eklendi.
 
 ---
 
 ## 📻 Organization & Community
 
-Developed and maintained by **RadioTEDU**:
+**RadioTEDU** tarafından geliştirilir ve bakımı yapılır:
 
 - **Website**: [radiotedu.com](https://radiotedu.com)
 - **Repository**: [radiotedu/radiotedu-tui](https://github.com/radiotedu/radiotedu-tui)
+- **Kaynak TUI**: [radiotedu/rtai-mobile/tree/main/terminal](https://github.com/radiotedu/rtai-mobile/tree/main/terminal)
 - **Organization**: RadioTEDU Ankara Studios · TED University ([radiotedu.com](https://radiotedu.com))
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+**MIT License** — ayrıntılar için [LICENSE](LICENSE) dosyasına bakın.
 Copyright (c) 2026 RadioTEDU (RadioTEDU Ankara Studios & TED University).

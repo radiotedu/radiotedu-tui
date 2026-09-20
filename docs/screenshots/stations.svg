@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" role="img" aria-label="radiotedu-tui stations dashboard">
+<rect width="1200" height="700" rx="16" fill="#0f1117"/>
+<rect x="0" y="0" width="1200" height="52" rx="16" fill="#171a23"/>
+<circle cx="36" cy="26" r="8" fill="#ff5f57"/><circle cx="60" cy="26" r="8" fill="#febc2e"/><circle cx="84" cy="26" r="8" fill="#28c840"/>
+<text x="116" y="33" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#9aa4b2">radiotedu — live dashboard · v1.4.4</text>
+<text x="900" y="33" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#f1c40f">◆ 420 Gold</text>
+<rect x="24" y="72" width="1152" height="52" rx="10" fill="#1a1e2e"/>
+<text x="48" y="105" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="20" fill="#1ed760">▣ [1: Stations]</text>
+<text x="280" y="105" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="20" fill="#8b93a7">2: Visualizer   3: Study   4: Account</text>
+<rect x="24" y="140" width="360" height="400" rx="10" fill="#151823"/>
+<text x="48" y="172" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">STATIONS (9 CHANNELS)</text>
+<text x="48" y="208" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#e5e9f0">● RadioTEDU    Flagship Main</text>
+<text x="48" y="242" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#f1c40f">● Classical    Symphonic [FLAC]</text>
+<rect x="36" y="258" width="336" height="34" rx="8" fill="#282b3a"/>
+<text x="48" y="282" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#ffffff">▸ ● Jazz         Bebop [FLAC]</text>
+<text x="48" y="316" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#8be9fd">● Lo-Fi        Chillhop Beats</text>
+<text x="48" y="350" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#f1fa8c">● Energize     Workout EDM</text>
+<text x="48" y="384" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#ffb86c">● Rock         Classic &amp; Alt</text>
+<text x="48" y="418" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#00e5ff">● English      Campus English</text>
+<text x="48" y="452" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#ff79c6">● Français     Campus French</text>
+<text x="48" y="486" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="18" fill="#50fa7b">● Voting       Audience Vote</text>
+<rect x="400" y="140" width="776" height="400" rx="10" fill="#151823"/>
+<text x="424" y="172" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">LIVE AUDIO SPECTRUM &amp; STREAM INFO</text>
+<g font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="22" fill="#1ed760">
+<text x="440" y="420">█</text><text x="462" y="400">█</text><text x="484" y="380">█</text><text x="506" y="360">█</text><text x="528" y="390">█</text><text x="550" y="370">█</text><text x="572" y="340">█</text><text x="594" y="365">█</text><text x="616" y="395">█</text><text x="638" y="375">█</text><text x="660" y="350">█</text><text x="682" y="380">█</text><text x="704" y="360">█</text><text x="726" y="390">█</text><text x="748" y="370">█</text><text x="770" y="345">█</text><text x="792" y="375">█</text><text x="814" y="395">█</text><text x="836" y="370">█</text><text x="858" y="350">█</text>
+<text x="440" y="442">█</text><text x="462" y="442">█</text><text x="484" y="442">█</text><text x="506" y="442">█</text><text x="528" y="442">█</text><text x="550" y="442">█</text><text x="572" y="442">█</text><text x="594" y="442">█</text><text x="616" y="442">█</text><text x="638" y="442">█</text><text x="660" y="442">█</text><text x="682" y="442">█</text><text x="704" y="442">█</text><text x="726" y="442">█</text><text x="748" y="442">█</text><text x="770" y="442">█</text><text x="792" y="442">█</text><text x="814" y="442">█</text><text x="836" y="442">█</text><text x="858" y="442">█</text>
+</g>
+<text x="424" y="468" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#62687f">60Hz  125Hz  250Hz  500Hz  1kHz  2kHz  4kHz  8kHz  16kHz</text>
+<text x="424" y="498" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">Station : Jazz (FLAC) · 24-bit 96kHz Lossless</text>
+<text x="424" y="522" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#8b93a7">Engine  : mpv · Buffer Healthy · Normal Latency</text>
+<rect x="24" y="556" width="1152" height="120" rx="10" fill="#1a1e2e"/>
+<text x="48" y="588" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#e5e9f0">NOW PLAYING: Miles Davis — So What</text>
+<text x="48" y="616" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="16" fill="#1ed760">04:12 ━━━━━━━━━━━━━●━━━━━━━━━━━━━━━━━━━━━━ 60:00 [● LIVE]</text>
+<text x="48" y="644" font-family="JetBrains Mono, Cascadia Mono, Menlo, monospace" font-size="14" fill="#8b93a7">[Space] Pause   [F] FLAC   [+] Vol+   [-] Vol-   [L] Login   [S] Study   [Q] Quit     Vol [████████░░] 80%</text>
+</svg>

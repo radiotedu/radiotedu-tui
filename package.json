@@ -11,15 +11,21 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "node --test",
-    "check": "node --check src/index.js && node --check src/tui.js && node --check src/api.js && node --check src/stations.js && node --check src/store.js && node --check src/player.js && node --check src/gold.js && node --check src/pkce.js",
+    "check": "node --check src/index.js && node --check src/tui.js && node --check src/layout.js && node --check src/listening.js && node --check src/api.js && node --check src/stations.js && node --check src/store.js && node --check src/player.js && node --check src/gold.js && node --check src/pkce.js && node --check src/metadata.js && node --check lib/index.js && node --check lib/diagnostics.js && node --check lib/dsp.js && node --check lib/media-controls.js && node --check lib/mpris.js && node --check lib/smtc.js && node --check lib/wrapped.js && node --check bin/index.js",
     "prepublishOnly": "npm test && npm run check"
   },
   "files": [
     "src",
+    "lib",
+    "bin",
+    "docs/screenshots",
     "install.ps1",
     "install.sh",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
   ],
   "keywords": [
     "radiotedu",
